@@ -19,6 +19,7 @@ services:
       - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/postgres
     volumes:
       - .:/app
+      - /app/.venv  # Anonymous volume to protect host .venv from being overwritten by Linux container
     command: uv run uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       - db
