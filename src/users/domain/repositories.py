@@ -1,0 +1,6 @@
+from typing import Protocol
+from src.users.domain.models import User
+
+class UserRepository(Protocol):
+    async def add(self, user: User) -> None: ...
+    async def get_by_email(self, email: str) -> User | None: ...
